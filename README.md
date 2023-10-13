@@ -12,7 +12,9 @@ Ctrl/Shift + M4 = fast clicks 							|	Hold button, release to stop
 W.I.P
 
 # Div Cards
-W.I.P
+F7 = Change Div Cards									| 	Hold button, release to stopge.
+														|	May try to change Esh Splinters/Breachstone
+														|	Sometimes stop working with hew league, lmk if that happens again
 
 # Harvest
 F7 = Reroll Essences/Delirium Orbs/Scarabs with Harvest	|	Press button once, close haverst window to stop. 
