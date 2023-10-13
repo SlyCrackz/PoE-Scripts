@@ -1,3 +1,14 @@
+;Global variables
+ScaleH := A_screenHeight / 1080
+Screen_Middle:= A_screenWidth / 2
+Inv_space:= % 53*ScaleH
+Stash_coord_x1:= 15*ScaleH
+Stash_coord_y1:= 120*ScaleH
+Stash_coord_y2:= 800*ScaleH
+Stash_coord_x2:= 650*ScaleH
+
+
+
 ~*F2::   ;  Inventory
 IfWinActive, Path of Exile
 {
@@ -12,8 +23,8 @@ base_Y:= 0
 MouseGetPos, base_X,base_Y
 SendEvent {Control down}
 while (getkeystate("F2", "P")) {
-    x_coord:= base_X + buf_x * 53
-    y_coord:= base_Y + buf_y * 53
+    x_coord:= base_X + buf_x * Inv_space
+    y_coord:= base_Y + buf_y * Inv_space
     Sleep 6
     MouseMove x_coord, y_coord
     Sleep 10
@@ -51,8 +62,8 @@ base_Y:= 0
 MouseGetPos, base_X,base_Y
 SendEvent {Control down}
 while (getkeystate("F3", "P")) {
-    x_coord:= base_X + buf_x * 53
-    y_coord:= base_Y + buf_y * 53
+    x_coord:= base_X + buf_x * Inv_space
+    y_coord:= base_Y + buf_y * Inv_space
     Sleep 6
     MouseMove x_coord, y_coord
     Sleep 10
@@ -83,8 +94,8 @@ base_X:= 0
 base_Y:= 0
 MouseGetPos, base_X,base_Y
 while (getkeystate("F4", "P")) {
-    x_coord:= base_X + buf_x*26,5
-    y_coord:= base_Y + buf_y*26,5
+    x_coord:= base_X + buf_x * Inv_space / 2
+    y_coord:= base_Y + buf_y * Inv_space / 2
     SendEvent {Control down}
     Sleep 6
     MouseMove x_coord, y_coord
@@ -112,7 +123,7 @@ MouseGetPos, base_X,base_Y
 BlockInput On
 SendInput {LControl down}
 while (getkeystate("F5", "P")) {
-    PixelSearch, Px, Py, 15, 120, 650, 800, 0x77b4e7, 2, Fast
+    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y1, Stash_coord_x2, Stash_coord_y2, 0x77b4e7, 2, Fast
     if (ErrorLevel) {
         Break
     }
@@ -127,52 +138,6 @@ SendInput {LControl up}
 SendInput {LShift up}
 MouseMove, base_X,base_Y
 BlockInput Off
-}
-Return
-
-
-#MaxThreadsPerHotkey 1
-~Sc029::   ;    Remnant of Corruption
-IfWinActive, Path of Exile
-{
-SetDefaultMouseSpeed, 0
-SetMouseDelay, 30
-base_X:= 0
-base_Y:= 0
-MouseGetPos, base_X,base_Y
-REx = base_X
-REy = base_Y
-ESx = base_X
-ESy = base_Y
-MouseMove, 960,540
-Send, {i}
-sleep, 100
-loop
-{
-PixelGetColor, color1, 1520, 66
-    if (A_Index > 50)
-        return
-    If (color1=0x66A6CC)
-        PixelSearch, REx, REy, 1270, 590, 1908, 850, 0x110DB9, 3, fast
-        if ErrorLevel   
-            {
-            Send, {i}
-            Return
-            }
-        PixelSearch, ESx, ESy, 0, 200, 1200, 1000, 0xFE8787, 0, fast
-        if ErrorLevel   
-            {
-            Send, {i}
-            Return
-            }
-        Click, %REx% %REy% right
-        Sleep, 100
-        Click, %ESx% %ESy% left
-        break
-    sleep, 100
-}
-Send, {i}
-MouseMove, base_X,base_Y
 }
 Return
 
