@@ -3,10 +3,10 @@ F7::
 IfWinActive, Path of Exile
 Clipboard := ""
 Sleep, 10
-Send, {RShift Down}
+Send, {LShift Down}
 Sleep, 10
 outer:
-	Loop 100
+	Loop 1000
     {
 		inner:
 		Loop
@@ -16,7 +16,7 @@ outer:
 			if(Clipboard!=oldclip)
 			break inner
 		}
-		IF Clipboard contains cold
+		IF Clipboard contains arrows
 		{
 		break outer
 		}
@@ -26,7 +26,7 @@ outer:
 		if GetKeyState("F7", "P") 
         break outer
     }
-Send, {RShift Up}
+Send, {LShift Up}
 Sleep, 10
 Return
 

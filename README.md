@@ -15,13 +15,17 @@ W.I.P
 W.I.P
 
 # Harvest
-W.I.P
+F7 = Reroll Essences/Delirium Orbs/Scarabs with Harvest	|	Press button once, close haverst window to stop. 
+														|	Will stop if runs out of juice/stuff to change.
+														|	To config open ahk with text editor and follow instructions.
 
 # Map Rolling
 W.I.P
 
 # Remanant
-Tilde = Corrupt essence with a Remanant					|	Will locate remnant automatically, essence should be on screen.																				|	Dont use near vaal side areas/trials/strongboxes																							|	Can sometimes try and use essence of delirium/eldritch ember
+Tilde = Corrupt essence with a Remanant					|	Will locate remnant automatically, essence should be on screen.
+														|	Dont use near vaal side areas/trials/strongboxes.								
+														|	Can sometimes try and use essence of delirium/eldritch ember.
 # Sextant
 W.I.P
 
