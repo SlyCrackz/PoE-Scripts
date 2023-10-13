@@ -2,9 +2,9 @@
  Collection of Path of Exile scripts
 
 # Main
-F2 = Dump inventory, starting from cursor position 		|	Hold button, release to stop
-F3 = Dump stash tab, starting from curssor position		|	Hold button, release to stop
-F4 = Dump quad tab, starting from cursor possition 		|	Hold button, release to stop
+F2 = Dump inventory, starting from cursor position 				|	Hold button, release to stop
+F3 = Dump stash tab, starting from curssor position				|	Hold button, release to stop
+F4 = Dump quad tab, starting from cursor possition 				|	Hold button, release to stop
 F5 = Pick up higlighted items  							|	Hold button, release to stop
 Ctrl/Shift + M4 = fast clicks 							|	Hold button, release to stop
 
