@@ -9,14 +9,14 @@ outer:
 	Loop 1000
     {
 		inner:
-		Loop
+		Loop 10
 		{
 			Send ^c
 			Sleep, 20
 			if(Clipboard!=oldclip)
 			break inner
 		}
-		IF Clipboard contains arrows
+		IF Clipboard contains all skill gems
 		{
 		break outer
 		}
@@ -29,4 +29,3 @@ outer:
 Send, {LShift Up}
 Sleep, 10
 Return
-

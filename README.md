@@ -35,7 +35,13 @@ F7 = Reroll Essences/Delirium Orbs/Scarabs with Harvest
 3. To config open ahk with text editor and follow instructions.
 
 # Map Rolling
-W.I.P
+F7 = Rerolls all maps highlighted with regex
+
+**Notes**:
+1. Press button once, close inventory to stop.
+2. Currency tab with alch&scours should be to the left of your tab with maps.
+3. Will take up to 60 highlighted maps from the current tab, use alc&scour on them, and put them back.
+4. Dont use if it highlights more than 60 maps
 
 # Remanant
 Tilde = Corrupt essence with a Remanant
