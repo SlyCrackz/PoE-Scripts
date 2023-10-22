@@ -123,12 +123,12 @@ MouseGetPos, base_X,base_Y
 BlockInput On
 SendInput {LControl down}
 while (getkeystate("F5", "P")) {
-    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y1, Stash_coord_x2, Stash_coord_y2, 0x77b4e7, 2, Fast
+    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y2, Stash_coord_x2, Stash_coord_y1, 0x77b4e7, 2, Fast
     if (ErrorLevel) {
         Break
     }
     Sleep 3
-    MouseMove, Px+4, Py+4
+    MouseMove, Px+4, Py-4
     Sleep 10
     Click, Up
     Sleep 3
