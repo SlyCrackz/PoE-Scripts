@@ -35,12 +35,12 @@ base_Y:= 0
 SendEvent {LControl down}
 Loop
 {
-    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y1, Stash_coord_x2, Stash_coord_y2, 0x77b4e7, 2, Fast
+    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y2, Stash_coord_x2, Stash_coord_y1, 0x77b4e7, 2, Fast
         if (ErrorLevel) {
             Break
         }
     Sleep %rand%
-    MouseMove, Px+4, Py+4
+    MouseMove, Px+4, Py-4
     Sleep %rand%
     Click, Up
     Sleep %rand%
