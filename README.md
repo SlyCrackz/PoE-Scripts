@@ -1,5 +1,6 @@
 # Scripts
  Collection of Path of Exile scripts
+ All scripts have random delays which can be configured in Config/Settings.ahk
 
 # Main
 F2 = Dump inventory, starting from cursor position
