@@ -9,6 +9,7 @@ Random, rand_DivCards, 15, 25
 
 ; Settings Harvest
 Random, rand_Harvest, 6, 12
+Regex_Harvest:="Contempt|Hatred|Woe| Anger|Of Torment|Sorrow|Rage|Wrath|Loathing|Zeal|Spite|Scorn|Envy|Horror|Divination|Ambush|Harbinger|Reliquary|Fine|Skittering|Diviner"
 
 ; Settings MapRolling
 Random, rand_MapRolling, 6, 12

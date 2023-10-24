@@ -5,7 +5,7 @@
 
 #MaxThreadsPerHotkey 1
 F7::
-IfWinActive, Path of Exile				; Нужные эссенции/скарабы/орбы/фоссили дописывать в 68 строку через запятую без пробела	
+IfWinActive, Path of Exile
 {
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 30
@@ -56,7 +56,7 @@ Loop 60
 				}
 				Send ^c
 				Sleep, rand_Harvest
-			    IF Clipboard contains Woe,Contempt,Hatred,Of Anger,Wrath,Rage,Sorrow,Spite,Loathing,Zeal,Scorn,Of Torment,Envy,Horror,Divination,Ambush,Harbinger,Reliquary,Fine,Skittering,Diviner
+			    If RegExMatch(Clipboard, Regex_Harvest)
 			    Break outer
 			    MouseMove, %Button_x%, %Button_y%
 				Sleep, rand_Harvest
