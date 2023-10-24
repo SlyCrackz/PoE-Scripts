@@ -1,5 +1,7 @@
-#Include config
+#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
+
 
 #MaxThreadsPerHotkey 1
 ~F7::   ;    Div Cards
@@ -20,7 +22,7 @@ while (getkeystate("F7", "P")) {
     Send, {Control down}
     Click, up
     Send, {Control up}
-    Sleep 10
+    Sleep rand_DivCards
     MouseMove A_screenWidth, A_screenHeight
     PixelSearch, Px2, Py2, TradeButton_x1, TradeButton_y1, TradeButton_x2, TradeButton_y2, 0x21430, 20, Fast
         if ErrorLevel   
@@ -28,7 +30,7 @@ while (getkeystate("F7", "P")) {
         MouseMove, base_X,base_Y
         Return
         }
-    Sleep 10
+    Sleep rand_DivCards
     Click, %Px2%, %Py2%
     PixelSearch,,, TradeButton_x1, TradeButton_y1, TradeButton_x2, TradeButton_y2, 0x01B1B1B, 20, Fast
         if ErrorLevel   

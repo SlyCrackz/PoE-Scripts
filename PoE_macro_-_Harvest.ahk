@@ -1,5 +1,7 @@
-#Include config
+#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
+
 
 #MaxThreadsPerHotkey 1
 F7::
@@ -7,7 +9,6 @@ IfWinActive, Path of Exile				; Нужные эссенции/скарабы/о�
 {
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 30
-Random, rand, 6, 12						; Случайная задержка в несколько милисекунд, если скрипт тупит ее надо увеличить
 buf_x:= 0
 buf_y:= 0
 x_coord:= 0
@@ -19,20 +20,20 @@ Loop 60
 	x_coord:= Inv_x + buf_x * Inv_space
     y_coord:= Inv_y + buf_y * Inv_space
 	MouseMove, x_coord, y_coord
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Send ^c
-	Sleep, %rand%
+	Sleep, rand_Harvest
 		If !Clipboard
 		{
 		SendEvent {ControlUp}
 		return
 		}
 	Click, left
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	MouseMove, %Button_x%, %Button_y%
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Click, left
-	sleep, %rand%
+	sleep, rand_Harvest
 	outer:
 		Loop 50
 			{
@@ -44,26 +45,26 @@ Loop 60
             	}
 			MouseMove, %Window_x%, %Window_y%
 			oldclip:=Clipboard																							
-			Sleep, %rand%
+			Sleep, rand_Harvest
 			inner:
 				Loop 500 	
 				{
 					Send ^c
-					Sleep, %rand%
+					Sleep, rand_Harvest
 					if(Clipboard!=oldclip)
 					break inner
 				}
 				Send ^c
-				Sleep, %rand%
+				Sleep, rand_Harvest
 			    IF Clipboard contains Woe,Contempt,Hatred,Of Anger,Wrath,Rage,Sorrow,Spite,Loathing,Zeal,Scorn,Of Torment,Envy,Horror,Divination,Ambush,Harbinger,Reliquary,Fine,Skittering,Diviner
 			    Break outer
 			    MouseMove, %Button_x%, %Button_y%
-				Sleep, %rand%
+				Sleep, rand_Harvest
 				Click, left
-			    sleep, %rand%
+			    sleep, rand_Harvest
 			}
 	MouseMove, %Window_x%, %Window_y%
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Click, left
 	buf_y:=buf_y+1
 	    if (buf_y = 5) 

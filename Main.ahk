@@ -1,5 +1,6 @@
-#Include config
+#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
 
 ~*F2::   ;  Inventory
 IfWinActive, Path of Exile
@@ -17,11 +18,11 @@ SendEvent {Control down}
 while (getkeystate("F2", "P")) {
     x_coord:= base_X + buf_x * Inv_space
     y_coord:= base_Y + buf_y * Inv_space
-    Sleep 6
+    Sleep rand_Main
     MouseMove x_coord, y_coord
-    Sleep 10
+    Sleep rand_Main
     Click, up
-    Sleep 5
+    Sleep rand_Main
     buf_y:=buf_y+1
     if (buf_y = 5) {
         buf_x:=buf_x+1

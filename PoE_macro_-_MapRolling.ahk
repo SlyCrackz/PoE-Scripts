@@ -1,12 +1,13 @@
-﻿#Include config
+﻿#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
+
 
 #MaxThreadsPerHotkey 1
 ~*F7::   ;   Map Rolling
 IfWinActive, Path of Exile
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 0
-Random, rand, 6, 12
 buf_x:= 0
 buf_x2:= 0
 buf_x3:=0
@@ -29,11 +30,11 @@ Loop
         if (ErrorLevel) {
             Break
         }
-    Sleep %rand%
+    Sleep rand_MapRolling
     MouseMove, Px+4, Py-4
-    Sleep %rand%
+    Sleep rand_MapRolling
     Click, Up
-    Sleep %rand%
+    Sleep rand_MapRolling
 }
 Send, {Left}
 MouseMove, Scour_x, Scour_y
@@ -47,16 +48,16 @@ Loop
     Clipboard:=
     x_coord:= Inv_x + buf_x * Inv_space
     y_coord:= Inv_y + buf_y * Inv_space
-    Sleep %rand%
+    Sleep rand_MapRolling
     MouseMove x_coord, y_coord
-    Sleep %rand%
+    Sleep rand_MapRolling
     Send c
-    Sleep %rand%
+    Sleep rand_MapRolling
     Click, left
-    Sleep %rand%
+    Sleep rand_MapRolling
         if clipboard = 
         break
-    Sleep %rand%
+    Sleep rand_MapRolling
     buf_y:=buf_y+1
     if (buf_y = 5) {
         buf_x:=buf_x+1
@@ -78,16 +79,16 @@ Loop
     Clipboard:=
     x_coord2:= Inv_x + buf_x2 * Inv_space
     y_coord2:= Inv_y + buf_y2 * Inv_space
-    Sleep %rand%
+    Sleep rand_MapRolling
     MouseMove x_coord2, y_coord2
-    Sleep %rand%
+    Sleep rand_MapRolling
     Send c
-    Sleep %rand%
+    Sleep rand_MapRolling
     Click, left
-    Sleep %rand%
+    Sleep rand_MapRolling
         if clipboard = 
         break
-    Sleep %rand%
+    Sleep rand_MapRolling
     buf_y2:=buf_y2+1
     if (buf_y2 = 5) {
         buf_x2:=buf_x2+1
@@ -104,16 +105,16 @@ Loop
     Clipboard:=
     x_coord3:= Inv_x + buf_x3 * Inv_space
     y_coord3:= Inv_y + buf_y3 * Inv_space
-    Sleep %rand%
+    Sleep rand_MapRolling
     MouseMove x_coord3, y_coord3
-    Sleep %rand%
+    Sleep rand_MapRolling
     Send c
-    Sleep %rand%
+    Sleep rand_MapRolling
     Click, left
-    Sleep %rand%
+    Sleep rand_MapRolling
         if clipboard = 
         break
-    Sleep %rand%
+    Sleep rand_MapRolling
     buf_y3:=buf_y3+1
     if (buf_y3 = 5) {
         buf_x3:=buf_x3+1

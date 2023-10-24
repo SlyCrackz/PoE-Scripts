@@ -1,5 +1,7 @@
-#Include config
+#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
+
 
 #MaxThreadsPerHotkey 1
 ~Sc029::   ;    Remnant of Corruption

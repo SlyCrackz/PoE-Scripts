@@ -1,5 +1,7 @@
-﻿#Include config
+﻿#Include Config
 #Include Coordinates.ahk
+#Include Settings.ahk
+
 
 #MaxThreadsPerHotkey 1
 ~F7::
@@ -14,11 +16,11 @@ MouseGetPos, base_X,base_Y
 while (getkeystate("F7", "P")) {
     PixelSearch, Px, Py, Inventory_x1, Inventory_y1, Inventory_x2, Inventory_y2, 0x6d768c, 3, Fast
     MouseMove, Px, Py
-    Sleep, %rand%
+    Sleep, rand_StackedDecks
     Click, right
-    Sleep, %rand%
+    Sleep, rand_StackedDecks
         MouseClick, left, Drop_x, Drop_y
-        Sleep, %rand%
+        Sleep, rand_StackedDecks
 }
 MouseMove, base_X,base_Y
 Return

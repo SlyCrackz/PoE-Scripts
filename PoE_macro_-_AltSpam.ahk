@@ -1,4 +1,8 @@
-﻿#MaxThreadsPerHotkey 2
+﻿#Include Config
+#Include Coordinates.ahk
+#Include Settings.ahk
+
+#MaxThreadsPerHotkey 2
 F7::
 IfWinActive, Path of Exile
 Clipboard := ""
@@ -21,7 +25,7 @@ outer:
 		break outer
 		}
 		Click, Left, 1
-		Sleep, 20
+		Sleep, rand_AltSpam
 		oldclip:=Clipboard
 		if GetKeyState("F7", "P") 
         break outer
