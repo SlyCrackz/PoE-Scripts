@@ -32,7 +32,7 @@ F7 = Reroll Essences/Delirium Orbs/Scarabs with Harvest
 **Notes**:
 1. Press button once, close haverst window to stop.
 2. Will stop if runs out of juice/stuff to change.
-3. To config open ahk with text editor and follow instructions.
+3. Configure in Settings.ahk, write which scarabs/essences/deli orbs you want with REGEX.
 
 # Map Rolling
 F7 = Rerolls all maps highlighted with regex
