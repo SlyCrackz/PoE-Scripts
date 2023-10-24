@@ -1,27 +1,18 @@
+#Include Config
+#Include Coordinates.ahk
+#Include Settings.ahk
+
+
 #MaxThreadsPerHotkey 1
 F7::
-IfWinActive, Path of Exile				; Нужные эссенции/скарабы/орбы/фоссили дописывать в 68 строку через запятую без пробела	
+IfWinActive, Path of Exile
 {
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 30
-Random, rand, 6, 12						; Случайная задержка в несколько милисекунд, если скрипт тупит ее надо увеличить
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
 buf_x:= 0
 buf_y:= 0
 x_coord:= 0
 y_coord:= 0
-Button_x:= % Screen_Middle
-Button_y:= % 600*ScaleH
-Window_x:= % Screen_Middle
-Window_y:= % 450*ScaleH
-Inv_x:= % A_screenwidth - 630*ScaleH
-Inv_y:= % 600*ScaleH
-Inv_space:= % 53*ScaleH
-Lifeforce_x1:= % Screen_Middle - 200*ScaleH
-Lifeforce_y1:= % 330*ScaleH
-Lifeforce_x2:= % Screen_Middle - 175*ScaleH
-Lifeforce_y2:= % 350*ScaleH
 SendEvent {Control down}
 Loop 60
 {
@@ -29,20 +20,20 @@ Loop 60
 	x_coord:= Inv_x + buf_x * Inv_space
     y_coord:= Inv_y + buf_y * Inv_space
 	MouseMove, x_coord, y_coord
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Send ^c
-	Sleep, %rand%
+	Sleep, rand_Harvest
 		If !Clipboard
 		{
 		SendEvent {ControlUp}
 		return
 		}
 	Click, left
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	MouseMove, %Button_x%, %Button_y%
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Click, left
-	sleep, %rand%
+	sleep, rand_Harvest
 	outer:
 		Loop 50
 			{
@@ -54,26 +45,26 @@ Loop 60
             	}
 			MouseMove, %Window_x%, %Window_y%
 			oldclip:=Clipboard																							
-			Sleep, %rand%
+			Sleep, rand_Harvest
 			inner:
 				Loop 500 	
 				{
 					Send ^c
-					Sleep, %rand%
+					Sleep, rand_Harvest
 					if(Clipboard!=oldclip)
 					break inner
 				}
 				Send ^c
-				Sleep, %rand%
-			    IF Clipboard contains Contempt,Hatred,Of Anger,Wrath,Rage,Sorrow,Spite,Loathing,Zeal,Scorn,Of Torment,Envy,Horror,Divination,Ambush,Harbinger,Reliquary,Fine,Skittering,Diviner
+				Sleep, rand_Harvest
+			    If RegExMatch(Clipboard, Regex_Harvest)
 			    Break outer
 			    MouseMove, %Button_x%, %Button_y%
-				Sleep, %rand%
+				Sleep, rand_Harvest
 				Click, left
-			    sleep, %rand%
+			    sleep, rand_Harvest
 			}
 	MouseMove, %Window_x%, %Window_y%
-	Sleep, %rand%
+	Sleep, rand_Harvest
 	Click, left
 	buf_y:=buf_y+1
 	    if (buf_y = 5) 

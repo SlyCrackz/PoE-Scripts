@@ -1,13 +1,6 @@
-;Global variables
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
-Inv_space:= % 53*ScaleH
-Stash_coord_x1:= 15*ScaleH
-Stash_coord_y1:= 120*ScaleH
-Stash_coord_y2:= 800*ScaleH
-Stash_coord_x2:= 650*ScaleH
-
-
+#Include Config
+#Include Coordinates.ahk
+#Include Settings.ahk
 
 ~*F2::   ;  Inventory
 IfWinActive, Path of Exile
@@ -25,11 +18,11 @@ SendEvent {Control down}
 while (getkeystate("F2", "P")) {
     x_coord:= base_X + buf_x * Inv_space
     y_coord:= base_Y + buf_y * Inv_space
-    Sleep 6
+    Sleep rand_Main
     MouseMove x_coord, y_coord
-    Sleep 10
+    Sleep rand_Main
     Click, up
-    Sleep 5
+    Sleep rand_Main
     buf_y:=buf_y+1
     if (buf_y = 5) {
         buf_x:=buf_x+1
@@ -97,11 +90,11 @@ while (getkeystate("F4", "P")) {
     x_coord:= base_X + buf_x * Inv_space / 2
     y_coord:= base_Y + buf_y * Inv_space / 2
     SendEvent {Control down}
-    Sleep 6
+    Sleep 3
     MouseMove x_coord, y_coord
-    Sleep 10
-    Click, up
     Sleep 5
+    Click, up
+    Sleep 3
     SendEvent {Control up}
     buf_y:=buf_y+1
     while (buf_y = 24) {
@@ -123,12 +116,12 @@ MouseGetPos, base_X,base_Y
 BlockInput On
 SendInput {LControl down}
 while (getkeystate("F5", "P")) {
-    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y1, Stash_coord_x2, Stash_coord_y2, 0x77b4e7, 2, Fast
+    PixelSearch, Px, Py, Stash_coord_x1, Stash_coord_y2, Stash_coord_x2, Stash_coord_y1, 0x77b4e7, 2, Fast
     if (ErrorLevel) {
         Break
     }
     Sleep 3
-    MouseMove, Px+4, Py+4
+    MouseMove, Px+4, Py-4
     Sleep 10
     Click, Up
     Sleep 3
@@ -149,7 +142,7 @@ IfWinActive, Path of Exile
 while (getkeystate("XButton1", "P"))
 {
     click, up
-    Sleep 30
+    Sleep 10
 }
 }
 Return
@@ -161,7 +154,7 @@ IfWinActive, Path of Exile
 while (getkeystate("XButton1", "P"))
 {
     click, up
-    Sleep 30
+    Sleep 50
 }
 }
 Return
