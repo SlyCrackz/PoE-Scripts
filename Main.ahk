@@ -97,11 +97,11 @@ while (getkeystate("F4", "P")) {
     x_coord:= base_X + buf_x * Inv_space / 2
     y_coord:= base_Y + buf_y * Inv_space / 2
     SendEvent {Control down}
-    Sleep 6
+    Sleep 3
     MouseMove x_coord, y_coord
-    Sleep 10
-    Click, up
     Sleep 5
+    Click, up
+    Sleep 3
     SendEvent {Control up}
     buf_y:=buf_y+1
     while (buf_y = 24) {
@@ -149,7 +149,7 @@ IfWinActive, Path of Exile
 while (getkeystate("XButton1", "P"))
 {
     click, up
-    Sleep 30
+    Sleep 10
 }
 }
 Return
@@ -161,7 +161,7 @@ IfWinActive, Path of Exile
 while (getkeystate("XButton1", "P"))
 {
     click, up
-    Sleep 30
+    Sleep 50
 }
 }
 Return

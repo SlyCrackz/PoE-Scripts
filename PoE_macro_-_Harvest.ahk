@@ -65,7 +65,7 @@ Loop 60
 				}
 				Send ^c
 				Sleep, %rand%
-			    IF Clipboard contains Contempt,Hatred,Of Anger,Wrath,Rage,Sorrow,Spite,Loathing,Zeal,Scorn,Of Torment,Envy,Horror,Divination,Ambush,Harbinger,Reliquary,Fine,Skittering,Diviner
+			    IF Clipboard contains Woe,Contempt,Hatred,Of Anger,Wrath,Rage,Sorrow,Spite,Loathing,Zeal,Scorn,Of Torment,Envy,Horror,Divination,Ambush,Harbinger,Reliquary,Fine,Skittering,Diviner
 			    Break outer
 			    MouseMove, %Button_x%, %Button_y%
 				Sleep, %rand%
