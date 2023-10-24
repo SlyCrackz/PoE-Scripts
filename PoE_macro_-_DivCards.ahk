@@ -1,30 +1,21 @@
+#Include config
+#Include Coordinates.ahk
+
 #MaxThreadsPerHotkey 1
 ~F7::   ;    Div Cards
 IfWinActive, Path of Exile
 {
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 30
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
-Inventory_x1:= % A_screenWidth - 650*ScaleH
-Inventory_y1:= % 590*ScaleH
-Inventory_x2:= % A_screenWidth - 20*ScaleH
-Inventory_y2:= % 850*ScaleH
-TradeButton_x1:= % Screen_middle - 380*ScaleH
-TradeButton_y1:= % 720*ScaleH
-TradeButton_x2:= % Screen_Middle - 280*ScaleH
-TradeButton_y2:= % 750*ScaleH
-ResultWindow_x:= % Screen_Middle - 330*ScaleH
-ResultWindow_y:= % A_screenHeight / 2
 base_X:= 0
 base_Y:= 0
-Px1:=base_X
-Py1:=base_Y
-Px2:=base_X
-Py2:=base_Y
+Px1:=0
+Py1:=0
+Px2:=0
+Py2:=0
 MouseGetPos, base_X,base_Y
 while (getkeystate("F7", "P")) {
-    PixelSearch, Px1, Py1, Inventory_x1, Inventory_y1, Inventory_x2, Inventory_y2, 0x8B6400, 2, Fast
+    PixelSearch, Px1, Py1, Inventory_x1, Inventory_y1, Inventory_x2, Inventory_y2, 0x8B6400, 0, Fast
     MouseMove %Px1%, %Py1%
     Send, {Control down}
     Click, up

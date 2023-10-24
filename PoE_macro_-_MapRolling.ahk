@@ -1,22 +1,12 @@
-﻿#MaxThreadsPerHotkey 1
+﻿#Include config
+#Include Coordinates.ahk
+
+#MaxThreadsPerHotkey 1
 ~*F7::   ;   Map Rolling
 IfWinActive, Path of Exile
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 0
 Random, rand, 6, 12
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
-Inv_x:= % A_screenwidth - 630*ScaleH
-Inv_y:= % 600*ScaleH
-Inv_space:= % 53*ScaleH
-Stash_coord_x1:= % 15*ScaleH
-Stash_coord_y1:= % 120*ScaleH
-Stash_coord_y2:= % 800*ScaleH
-Stash_coord_x2:= % 650*ScaleH
-Scour_x:= % 430*ScaleH
-Scour_y:= % 510*ScaleH
-Alch_x:= % 500*ScaleH
-Alch_y:= % 280*ScaleH
 buf_x:= 0
 buf_x2:= 0
 buf_x3:=0
@@ -108,6 +98,7 @@ Loop
 }
 SendEvent {LShift up}
 Sleep, 150
+SendEvent {LShift down}
 Loop
 {
     Clipboard:=
@@ -131,6 +122,7 @@ Loop
         break
         }
 }
+SendEvent {LShift up}
 SendEvent {LControl up}
 }
 Return

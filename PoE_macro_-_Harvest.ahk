@@ -1,3 +1,6 @@
+#Include config
+#Include Coordinates.ahk
+
 #MaxThreadsPerHotkey 1
 F7::
 IfWinActive, Path of Exile				; Нужные эссенции/скарабы/орбы/фоссили дописывать в 68 строку через запятую без пробела	
@@ -5,23 +8,10 @@ IfWinActive, Path of Exile				; Нужные эссенции/скарабы/о�
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 30
 Random, rand, 6, 12						; Случайная задержка в несколько милисекунд, если скрипт тупит ее надо увеличить
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
 buf_x:= 0
 buf_y:= 0
 x_coord:= 0
 y_coord:= 0
-Button_x:= % Screen_Middle
-Button_y:= % 600*ScaleH
-Window_x:= % Screen_Middle
-Window_y:= % 450*ScaleH
-Inv_x:= % A_screenwidth - 630*ScaleH
-Inv_y:= % 600*ScaleH
-Inv_space:= % 53*ScaleH
-Lifeforce_x1:= % Screen_Middle - 200*ScaleH
-Lifeforce_y1:= % 330*ScaleH
-Lifeforce_x2:= % Screen_Middle - 175*ScaleH
-Lifeforce_y2:= % 350*ScaleH
 SendEvent {Control down}
 Loop 60
 {

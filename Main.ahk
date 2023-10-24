@@ -1,13 +1,5 @@
-;Global variables
-ScaleH := A_screenHeight / 1080
-Screen_Middle:= A_screenWidth / 2
-Inv_space:= % 53*ScaleH
-Stash_coord_x1:= 15*ScaleH
-Stash_coord_y1:= 120*ScaleH
-Stash_coord_y2:= 800*ScaleH
-Stash_coord_x2:= 650*ScaleH
-
-
+#Include config
+#Include Coordinates.ahk
 
 ~*F2::   ;  Inventory
 IfWinActive, Path of Exile
