@@ -3,6 +3,7 @@ Random, rand_Main, 10, 15
 
 ; Settings AltSpam
 Random, rand_AltSpam, 25, 35
+Regex_AltSpam:="All Skill|nal Arrows"
 
 ; Settings DivCards
 Random, rand_DivCards, 15, 25
