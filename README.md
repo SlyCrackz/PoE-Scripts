@@ -1,5 +1,6 @@
 # Scripts
  Collection of Path of Exile scripts
+ All scripts have random delays, configure them in Settings,ahk if script is too slow/fast
 
 # Main
 F2 = Dump inventory, starting from cursor position
@@ -16,7 +17,12 @@ Ctrl/Shift + M4 = fast clicks
 1. Hold button, release to stop
 
 # Alt Spam
-W.I.P
+F7 = Alt spam until hits desired mod
+
+**Notes**:
+1. Pick up alt on cursor, move it to the item and press F7
+2. Stops afetr using 1000 alts or after the desired mod is hit
+3. Configure in Settings.ahk, write which mods you want REGEX.
 
 # Div Cards
 F7 = Change Div Cards
@@ -52,7 +58,15 @@ Tilde = Corrupt essence with a Remanant
 3. Can sometimes try and use essence of delirium/eldritch ember.
 
 # Sextant Rolling
-W.I.P
+F7 = Rolls a quad tab of compasses
+
+**Notes**:
+1. Press button once, F5 to stop
+2. Will roll up to quad tab of compasses
+3. Just open stash and altas window, dont move atlas.
+4. Make sure an empty quad tab is to the left of currency tab
+5. Compass should be in top-left corner
+6. Configure in settings.ahk, write which sextant to keep with REGEX
 
 # Stacked Decks
 F7  = Open Stacked Decks
