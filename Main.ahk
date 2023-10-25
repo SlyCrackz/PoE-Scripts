@@ -18,11 +18,11 @@ SendEvent {Control down}
 while (getkeystate("F2", "P")) {
     x_coord:= base_X + buf_x * Inv_space
     y_coord:= base_Y + buf_y * Inv_space
-    Sleep rand_Main
+    Sleep rand_Main / 3
     MouseMove x_coord, y_coord
     Sleep rand_Main
     Click, up
-    Sleep rand_Main
+    Sleep rand_Main / 3
     buf_y:=buf_y+1
     if (buf_y = 5) {
         buf_x:=buf_x+1
@@ -57,11 +57,11 @@ SendEvent {Control down}
 while (getkeystate("F3", "P")) {
     x_coord:= base_X + buf_x * Inv_space
     y_coord:= base_Y + buf_y * Inv_space
-    Sleep 6
+    Sleep rand_Main / 3
     MouseMove x_coord, y_coord
-    Sleep 10
+    Sleep rand_Main
     Click, up
-    Sleep 5
+    Sleep rand_Main / 3
     buf_y:=buf_y+1
     if (buf_y = 12) {
         buf_x:=buf_x+1
@@ -90,11 +90,11 @@ while (getkeystate("F4", "P")) {
     x_coord:= base_X + buf_x * Inv_space / 2
     y_coord:= base_Y + buf_y * Inv_space / 2
     SendEvent {Control down}
-    Sleep 3
+    Sleep rand_Main / 3
     MouseMove x_coord, y_coord
-    Sleep 5
+    Sleep rand_Main
     Click, up
-    Sleep 3
+    Sleep rand_Main / 3
     SendEvent {Control up}
     buf_y:=buf_y+1
     while (buf_y = 24) {
@@ -120,11 +120,11 @@ while (getkeystate("F5", "P")) {
     if (ErrorLevel) {
         Break
     }
-    Sleep 3
+    Sleep rand_Main / 3
     MouseMove, Px+4, Py-4
-    Sleep 10
+    Sleep rand_Main
     Click, Up
-    Sleep 3
+    Sleep rand_Main / 3
 }
 Sleep 30
 SendInput {LControl up}
