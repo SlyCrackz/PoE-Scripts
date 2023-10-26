@@ -9,7 +9,7 @@ F3 = Dump stash tab, starting from curssor position
 
 F4 = Dump quad tab, starting from cursor possition
 
-F5 = Pick up higlighted items
+F5 = Pick up higlighted items from stash tab
 
 Ctrl/Shift + M4 = fast clicks
 
@@ -21,8 +21,8 @@ F7 = Alt spam until hits desired mod
 
 **Notes**:
 1. Pick up alt on cursor, move it to the item and press F7
-2. Stops after using 1000 alts, after the desired mod is hit, or you you press F7 again.
-3. Configure in Settings.ahk, write which mods you want REGEX.
+2. Stops after using 1000 alts, after the desired mod is hit, or if you press F7 again.
+3. Configure in Settings.ahk, write which mods you want with REGEX.
 
 # Div Cards
 F7 = Change Div Cards
