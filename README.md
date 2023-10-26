@@ -21,7 +21,7 @@ F7 = Alt spam until hits desired mod
 
 **Notes**:
 1. Pick up alt on cursor, move it to the item and press F7
-2. Stops afetr using 1000 alts or after the desired mod is hit
+2. Stops after using 1000 alts, after the desired mod is hit, or you you press F7 again.
 3. Configure in Settings.ahk, write which mods you want REGEX.
 
 # Div Cards
