@@ -20,7 +20,7 @@ outer:
 			if(Clipboard!=oldclip)
 			break inner
 		}
-		IF Clipboard contains all skill gems
+		If RegExMatch(Clipboard, Regex_AltSpam)
 		{
 		break outer
 		}
