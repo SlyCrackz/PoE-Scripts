@@ -189,8 +189,8 @@ Return
 
 macroRunning := false  ; Variable to track the state of the macro
 
-*X::  ; This is the hotkey for X
-IfWinActive, Path of Exile
+#IfWinActive, Path of Exile
+*X::  ; This is the hotkey for X within Path of Exile
 {
     if (!macroRunning)  ; Check if the macro is not already running
     {
@@ -212,7 +212,7 @@ IfWinActive, Path of Exile
     }
     return
 }
-Return
+#IfWinActive
 
 
 
