@@ -20,7 +20,7 @@ Random, rand_Remnant, 5, 10
 
 ; Settings SextantRolling
 Random, rand_SextantRolling, 50, 100
-Regex_SextantRolling:="i)Delirium|mirror of|100|Allu|Alva|Beyond|Chayula|Gilded|Grove|Harbi|Hunted|Jun|Legion|are Corrupted|enrage"
+Regex_SextantRolling:="xe|enr|bon|aby|l le|nsp|f d|wa|all|sl|rb|gro|c p"
 
 ; Settings StackedDecks
 Random, rand_StackedDecks, 15, 25

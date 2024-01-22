@@ -78,8 +78,8 @@ Inventory_check_x:= POE_WindowWidth - 400*ScaleH
 Inventory_check_y:= 66*ScaleH
 
 ; SextantSpam-Specific Coordinates
-Voidstone_x:=Screen_middle + 10*ScaleH
-Voidstone_y:=920*ScaleH
+Voidstone_x:=Screen_middle - 7*ScaleH
+Voidstone_y:=935*ScaleH
 Sextant_x:=430*ScaleH
 Sextant_y:=390*ScaleH
 Compass_x:=160*ScaleH

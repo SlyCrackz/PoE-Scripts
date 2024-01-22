@@ -2,47 +2,242 @@
 #Include Coordinates.ahk
 #Include Settings.ahk
 
-~*NumpadDiv::    ; Bind to Keypad Slash
-IfWinActive, Path of Exile
+; Global variable for toggle state
+global remapActive := false
+global antiAFKActive := false
+global timerInterval := 1000 ; Initial interval in milliseconds (1 second)
+
+; Toggle anti-AFK with Ctrl + o
+^o::  ; Ctrl + o
 {
-    Process, Priority,, High  ; Increase script priority
-
-    ; Open the inventory
-    SendInput "``"
-    Sleep, 50  ; Reduced sleep time
-
-    ; Define the search area (right side of the screen)
-    searchAreaX1 := A_ScreenWidth * 0.5  ; Adjust based on your screen layout
-    searchAreaY1 := 0
-    searchAreaX2 := A_ScreenWidth
-    searchAreaY2 := A_ScreenHeight
-
-    ; ImageSearch to confirm inventory is open
-    Loop, 3  ; Reduced loop iterations
-    {
-        ImageSearch, foundX, foundY, searchAreaX1, searchAreaY1, searchAreaX2, searchAreaY2, *15 InventoryImageDX12.png  ; Adjust sensitivity if needed
-        if ErrorLevel = 0
-        {
-            ; Inventory is open, proceed to click on portal scroll
-            MouseGetPos, originalX, originalY  ; Save original mouse position
-
-            ; Predefined coordinates of the portal scroll
-            portalScrollX := 1410  ; Adjust these coordinates as needed
-            portalScrollY := 820
-
-            ; Move the mouse to the portal scroll and right-click
-            MouseMove, portalScrollX, portalScrollY, 0
-            MouseClick, right
-            MouseMove, originalX, originalY, 0  ; Move back to original position
-
-            Sleep, 50  ; Brief pause before closing the inventory
-            SendInput "``"  ; Close the inventory
-            break
-        }
-        Sleep, 50  ; Reduced sleep time
+    antiAFKActive := !antiAFKActive  ; Toggle state
+    if (antiAFKActive) {
+        SoundBeep, 1000, 200  ; High beep for ON
+        SetTimer, PressX, %timerInterval%
+    } else {
+        SoundBeep, 500, 200   ; Low beep for OFF
+        SetTimer, PressX, Off
     }
 }
 Return
+
+
+PressX:
+    if WinActive("ahk_exe PathOfExile.exe") ; Check if Path of Exile is active
+    {
+        Send, x  ; Simulate pressing 'X'
+    }
+    timerInterval := RandomInterval(15000, 45000) ; Random interval between 15 to 45 seconds
+    SetTimer, PressX, %timerInterval%
+Return
+
+
+RandomInterval(min, max) {
+    Random, rand, %min%, %max%
+    return rand
+}
+
+; Toggle remapping with Shift + Middle Mouse Button
++MButton::  ; Shift + Middle Mouse Button
+{
+    remapActive := !remapActive  ; Toggle state
+    if (remapActive)
+        SoundBeep, 1000, 200  ; High beep for ON
+    else
+        SoundBeep, 500, 200   ; Low beep for OFF
+}
+Return
+
+; Function to check if the mouse is over the Path of Exile window
+IsPoEWindowUnderMouse() {
+    MouseGetPos, , , windowUnderMouse
+    WinGetTitle, titleUnderMouse, ahk_id %windowUnderMouse%
+    return (titleUnderMouse = "Path of Exile")  ; Adjust if the window title is different
+}
+
+#If (remapActive && IsPoEWindowUnderMouse())
+
+    q::LButton
+    LButton::q
+
+#If
+
+
+
+
+; ~*NumpadDiv::    ; Bind to Keypad Slash
+; IfWinActive, Path of Exile
+; {
+;     Process, Priority,, High  ; Increase script priority
+
+;     ; Open the inventory
+;     SendInput "``"
+;     Sleep, 100  ; Initial sleep time to allow for inventory opening
+
+;     ; Define the search area (right side of the screen)
+;     searchAreaX1 := A_ScreenWidth * 0.5
+;     searchAreaY1 := 0
+;     searchAreaX2 := A_ScreenWidth
+;     searchAreaY2 := A_ScreenHeight
+
+;     ; Dynamically loop until inventory image is found or max attempts reached
+;     inventoryFound := false
+;     maxAttempts := 20  ; Max number of attempts to find the inventory
+;     attempts := 0
+
+;     while (!inventoryFound and attempts < maxAttempts)
+;     {
+;         ImageSearch, foundX, foundY, searchAreaX1, searchAreaY1, searchAreaX2, searchAreaY2, *15 InventoryImageDX12.png
+;         if (ErrorLevel = 0)
+;         {
+;             inventoryFound := true
+;         }
+;         else
+;         {
+;             attempts++
+;         }
+
+;         ; Check for manual exit key
+;         if GetKeyState("Ctrl") && GetKeyState("NumpadDiv")
+;         {
+;             break  ; Exit the loop
+;         }
+;     }
+
+;     if (inventoryFound)
+;     {
+;         ; Release the left mouse button if it's being held down
+;         if (GetKeyState("LButton", "P"))
+;         {
+;             Send, {LButton Up}
+;             Sleep, 50  ; Short pause to ensure the release is registered
+;         }
+
+;         ; Once the inventory is found, click on the portal scroll
+;         MouseGetPos, originalX, originalY  ; Save original mouse position
+
+;         ; Define central coordinates of the portal scroll and randomize click within a small area
+;         centralPortalX := 1410  ; Central X-coordinate (adjust as needed)
+;         centralPortalY := 820   ; Central Y-coordinate (adjust as needed)
+;         randomX := centralPortalX + Random(-10, 10)  ; Randomize X within a 20-pixel range
+;         randomY := centralPortalY + Random(-10, 10)  ; Randomize Y within a 20-pixel range
+
+;         ; Move the mouse to the randomized portal scroll location and right-click
+;         MouseMove, randomX, randomY, 0
+;         MouseClick, right
+;         MouseMove, originalX, originalY, 0  ; Move back to original position
+
+;         Sleep, 50  ; Brief pause before closing the inventory
+;         SendInput "``"  ; Close the inventory
+;     }
+; }
+; Return
+
+; Random(min, max) {
+;     Random, rand, %min%, %max%
+;     return rand
+; }
+
+toggle := false  ; Variable to track if the macro is active
+
+~*NumpadDiv::    ; Bind to Keypad Slash
+IfWinActive, Path of Exile
+{
+    toggle := true  ; Activate macro mode
+
+    Process, Priority,, High  ; Increase script priority
+
+    ; Swap to the weapon set with the portal gem
+    SendInput {X}
+    Sleep, 150  ; Short pause after weapon swap
+
+    ; Hold down the T key for half a second to cast the portal spell
+    SendInput {T Down}
+    Sleep, 500  ; Hold T for half a second
+    SendInput {T Up}
+
+    ; Wait rq before going back
+    Sleep 150
+
+    ; Swap back to the original weapon set
+    SendInput {X}
+    Sleep, 100  ; Short pause after swapping back
+
+    ; Turn on auras bound to A, S, D, F, G
+    SendInput {A}
+    SendInput {S}
+    SendInput {D}
+
+    toggle := false  ; Deactivate macro mode
+}
+Return
+
+#IfWinActive, Path of Exile
+RButton::
+    if (toggle) {
+        Return  ; Disable right-click when macro is active
+    } else {
+        Send {RButton}  ; Allow right-click when macro is not active
+    }
+Return
+#IfWinActive
+
+
+
+
+
+
+macroRunning := false  ; Variable to track the state of the macro
+
+*X::  ; This is the hotkey for X
+IfWinActive, Path of Exile
+{
+    if (!macroRunning)  ; Check if the macro is not already running
+    {
+        macroRunning := true  ; Set the macro as running
+
+        ; Send 'X' or 'Shift+X' based on whether Shift is held down
+        if GetKeyState("Shift", "P")
+            SendInput, +x  ; Send 'Shift+X'
+        else
+            SendInput, x  ; Send 'X'
+
+        Sleep 250
+        ; Macro actions here
+        SendInput {Blind}{A Down}{S Down}{D Down}
+        Sleep, 100
+        SendInput {Blind}{A Up}{S Up}{D Up}
+
+        macroRunning := false  ; Reset the macro state
+    }
+    return
+}
+Return
+
+
+
+^Space::
+IfWinActive, Path of Exile
+{
+
+    if (!macroRunning)
+    {
+        macroRunning := true  ; Set the macro as running
+
+        Sleep 250
+        ; Prevents the Space input from being sent to the game
+        SendInput {Blind}{A Down}{S Down}{D Down}{F Down}{G Down}
+        Sleep, 100  ; You can adjust this duration as needed
+        SendInput {Blind}{A Up}{S Up}{D Up}{F Up}{G Up}
+        macroRunning := false  ; Reset the macro state
+
+    }
+}
+Return
+
+
+
+
 
 
 ~*NumpadMult:: 
