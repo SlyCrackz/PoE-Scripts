@@ -138,15 +138,11 @@ IsPoEWindowUnderMouse() {
 ;     return rand
 ; }
 
-toggle := false  ; Variable to track if the macro is active
 
 ~*NumpadDiv::    ; Bind to Keypad Slash
 IfWinActive, Path of Exile
 {
-    toggle := true  ; Activate macro mode
-
     Process, Priority,, High  ; Increase script priority
-
     ; Swap to the weapon set with the portal gem
     SendInput {X}
     Sleep, 150  ; Short pause after weapon swap
@@ -167,22 +163,8 @@ IfWinActive, Path of Exile
     SendInput {A}
     SendInput {S}
     SendInput {D}
-
-    toggle := false  ; Deactivate macro mode
 }
 Return
-
-#IfWinActive, Path of Exile
-RButton::
-    if (toggle) {
-        Return  ; Disable right-click when macro is active
-    } else {
-        Send {RButton}  ; Allow right-click when macro is not active
-    }
-Return
-#IfWinActive
-
-
 
 
 
